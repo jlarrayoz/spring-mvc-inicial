@@ -1,9 +1,28 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <body>
 	<h1>Bienvenido a Spring MVC</h1>
-	
 	<p>Aprendiendo a utilizar Spring Boot 3 y MVC</p>
 </body>
+
+<h2>Lista de personas</h2>
+
+<div th:unless="${#lists.isEmpty(personas)}">
+	<ul>
+		<li th:each="persona: ${personas}">
+			<span th:text="${persona.nombre}">NOMBRE</span>
+			<span th:text="${persona.apellido}">APELLIDO</span>
+		</li>
+	</ul>
+</div>
+
+<form action="/nuevaPersona" method="post">
+	<label for="nombre">Nombre: </label>
+	<input type="text" name="nombress"/> <br/>
+	<label for="apellido">Apellido: </label>
+	<input type="text" name="apellidoxx"/> <br/>
+	<button type="submit">Agregar</button>
+</form>
 
 </html>
